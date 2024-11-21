@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Steganography</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index1.css') }}">
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Encryption Panel -->
+        <div class="form-container sign-in-container">
+            <form action="/encrypt" method="post" enctype="multipart/form-data">
+                <h1>Embed Secret Image</h1>
+                <p>Upload a cover image and a secret image to create a steganographic image.</p>
+                <input type="file" name="cover_image" accept=".png, .jpg, .jpeg, .pdf" required />
+                <input type="file" name="secret_image" accept=".png, .jpg, .jpeg, .pdf" required />
+                <button class="action-button" type="submit">Encrypt</button>
+            </form>
+        </div>
+
+        <!-- Decryption Panel -->
+        <div class="form-container sign-up-container">
+            <form action="/decrypt" method="post" enctype="multipart/form-data">
+                <h1>Extract Secret Image</h1>
+                <p>Upload a steganographic image to extract the hidden secret image.</p>
+                <input type="file" name="stego_image" accept=".png, .jpg, .jpeg" required />
+                <button class="action-button" type="submit">Decrypt</button>
+            </form>
+        </div>
+
+        <!-- Overlay Container -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To decrypt, please upload the steganographic image.</p>
+                    <button class="ghost action-button" id="embed">Go to Encrypt</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Steganography Made Easy!</h1>
+                    <p>Securely embed your data into an image for safe sharing.</p>
+                    <button class="ghost action-button" id="debed">Go to Decrypt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript -->
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
